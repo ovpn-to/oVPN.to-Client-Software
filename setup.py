@@ -128,15 +128,18 @@ lines.append('AppUpdatesURL=%s' % release_version.org_data()["UPDATES"])
 lines.append('AppCopyright=Copyright %s'  % release_version.setup_data()["copyright"])
 lines.append('OutputBaseFilename=ovpn_client_v{#Version}-gtk3_%s_setup' % inno)
 if release_version.version_data()["SIGN"] == True:
-    lines.append('SignTool=signtool1')
-    #lines.append('SignTool=signtool2')
+    #lines.append('SignTool=signtool1')
+    lines.append('SignTool=signtool2')
     #lines.append('SignTool=signtool3')
-    lines.append('SignTool=signtool4')
+    #lines.append('SignTool=signtool4')
 if inno == "win32":
     lines.append('DefaultDirName={pf}\{#AppDir}')
 else:
     lines.append('DefaultDirName={pf64}\{#AppDir}')
-lines.append('SignedUninstaller=yes')
+if release_version.version_data()["SIGN"] == True:
+    lines.append('SignedUninstaller=yes')
+else:
+    lines.append('SignedUninstaller=no')
 lines.append('Compression=lzma2/max')
 lines.append('SolidCompression=yes')
 lines.append('AppId={{991F58FC-8D40-4B45-B434-6A10AAC12FBA}')

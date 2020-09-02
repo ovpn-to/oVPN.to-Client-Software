@@ -58,7 +58,8 @@ def signtool_verify(DEBUG,file):
     debug(1,"[signtool.py] def signtool_verify(%s)"%(file),DEBUG,True)
     signtool = find_signtool(DEBUG)
     if os.path.isfile(file):
-        cscertsha1 = "21F94C255A8B20D21A323CA5ACB8EBF284E09037"
+        
+        cscertsha1 = "029f2b420f1ca580fa90101aabef3aff96ae9076".upper()
         #if devmode() == True:
         #   cscertsha1 = "1234000012340000123400001234000012340000"
         verbose = "/q"
@@ -76,26 +77,34 @@ def signtool_verify(DEBUG,file):
             return True
         else:
             debug(1,"[signtool.py] def signtool_verify: file = '%s' signature failed"%(file),DEBUG,True)
+            """
             # only check file is signed from same CA if DEVMODE is True
             if devmode() == False:
                 return False
             else:
                 return False
-                debug(1,"[signtool.py] def signtool_verify: file = '%s' check signature CA hash"%(file),DEBUG,True)
-                cacertsha1 = "92C1588E85AF2201CE7915E8538B492F605B80C6"
-                string2 = '"%s" verify /v /a /all /pa /tw /ca %s "%s"' % (signtool,cacertsha1,file)
-                debug(1,"[signtool.py] def signtool_verify: string2 = '%s'"%(string2),DEBUG,True)
-                exitcode2 = 1
-                try:
-                    exitcode2 = subprocess.check_call("%s" % (string2),shell=True)
-                except:
-                    pass
-                if exitcode2 == 0:
-                    debug(1,"[signtool.py] def signtool_verify: file = '%s' signature CA verified"%(file),DEBUG,True)
-                    return True
-                else:
-                    debug(1,"[signtool.py] def signtool_verify: file = '%s' signature CA failed"%(file),DEBUG,True)
-                    return False
+            """
+            """
+            debug(1,"[signtool.py] def signtool_verify: file = '%s' check signature CA hash"%(file),DEBUG,True)
+            cacertsha1 = "21F94C255A8B20D21A323CA5ACB8EBF284E09037"
+            string2 = '"%s" verify /v /a /all /pa /tw /ca %s "%s"' % (signtool,cacertsha1,file)
+            """
+            debug(1,"[signtool.py] def signtool_verify: file = '%s' check signature old hash"%(file),DEBUG,True)
+            oldcscertsha1 = "21F94C255A8B20D21A323CA5ACB8EBF284E09037"
+            string2 = '"%s" verify %s /a /all /pa /tw /sha1 %s "%s"' % (signtool,verbose,oldcscertsha1,file)
+            
+            debug(1,"[signtool.py] def signtool_verify: string2 = '%s'"%(string2),DEBUG,True)
+            exitcode2 = 1
+            try:
+                exitcode2 = subprocess.check_call("%s" % (string2),shell=True)
+            except:
+                pass
+            if exitcode2 == 0:
+                debug(1,"[signtool.py] def signtool_verify: file = '%s' signature old hash verified"%(file),DEBUG,True)
+                return True
+            else:
+                debug(1,"[signtool.py] def signtool_verify: file = '%s' signature old hash failed"%(file),DEBUG,True)
+                return False
     else:
         debug(1,"[signtool.py] def signtool_verify(%s) not found"%(file),DEBUG,True)
         return False

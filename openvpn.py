@@ -11,26 +11,38 @@ import release_version
 import hashings
 import signtool
 import encodes
-
+import platform
 
 def values(DEBUG):
     debug(9,"[openvpn.py] def values()",DEBUG,True)
     try:
-        ARCH = get_arch(DEBUG)
-        BUILT = "Apr 26 2018"
-        TIMESTAMP = 1524693600
-        VERSION = "2.4.6"
-        BUILT_V = "I602"
+    
+        OSVER = "Win7"
+        if "Windows-10" in platform.platform():
+            OSVER = "Win10"
         
-        SHA_512 = "1d8456847c84425d5078062bca790c2ffcd6cc0a227ee4522537a87716de3878065b9813cd1aa6b56ebb3fbfb0558f5b71ecbfe20063d01ab4f9c5ba932a28f4"
-        F_SIZE = 3861232
+        ARCH = get_arch(DEBUG)
+        BUILT = "Apr 16 2020"
+        TIMESTAMP = 1586988000
+        VERSION = "2.4.9"
+        BUILT_V = "I601"
+        
+        if OSVER == "Win10":
+            SHA_512 = "0a18f720856429da8f68a9ab1ec782ee3655981cbfb5b33b94d03e85ba8b1315b370d7c35fe0f23ec7b1e12c2647c26cb5124cf890dec43b0f110253b42deb2d"
+            F_SIZE = 4310696
+        elif OSVER == "Win7":
+            SHA_512 = "9589aff2daf60325d79fd561f326fcd02e7628dcb2c6cf067ac32f0753c1659596e6a64faf054cdd323c3f937098ccca62fbb4fbb8e9a1535f4db008cca6b2f5"
+            F_SIZE = 4296720
+        else:
+            debug(1,"[openvpn.py] def values: OSVERSION failed = '%s'"%(platform.platform()),DEBUG,True)
+            sys.exit()
         
         URLS = {
             "REM" : "https://%s/files/openvpn" % (release_version.org_data()["VCP_DOMAIN"]),
             "ALT" : "https://swupdate.openvpn.net/community/releases"
             }
         
-        SETUP_FILENAME = "openvpn-install-%s-%s.exe" % (VERSION,BUILT_V)
+        SETUP_FILENAME = "openvpn-install-%s-%s-%s.exe" % (VERSION,BUILT_V,OSVER)
         OPENVPN_DL_URL =  "%s/%s" % (URLS["REM"],SETUP_FILENAME)
         OPENVPN_DL_URL_ALT = "%s/%s" % (URLS["ALT"],SETUP_FILENAME)
         

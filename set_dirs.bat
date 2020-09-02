@@ -24,7 +24,7 @@ set CERTUTIL="C:\Windows\System32\CertUtil.exe"
 
 IF "%BITS%" == "32" ( set SIGNTOOL=%INCLUDESDIR%\codesign\signtool_w10sdk_x86.exe )
 IF "%BITS%" == "64" ( set SIGNTOOL=%INCLUDESDIR%\codesign\signtool_w10sdk_x64.exe )
-set SIGNCERTSHA1=02fde186c1cac4a08cec7b7420bf3280d6fe978b
+set SIGNCERTSHA1=407a4eb4c0b0e4a9c05f1c9975d8a51a4966d959
 
 
 IF NOT EXIST %CERTUTIL% (echo %CERTUTIL% NOT FOUND && PAUSE && EXIT)
@@ -32,11 +32,13 @@ IF NOT EXIST %SIGNTOOL% (echo %SIGNTOOL% NOT FOUND && PAUSE && EXIT)
 
 REM DONT CHANGE DOWN HERE !
 
-set SIGNTOOLCMD1=%SIGNTOOL% sign /v /sha1 %SIGNCERTSHA1% /fd sha1 /t http://timestamp.comodoca.com/?td=sha1
-::set SIGNTOOLCMD2=%SIGNTOOL% sign /v /as /sha1 %SIGNCERTSHA1% /fd sha256 /td sha256 /tr http://timestamp.comodoca.com/?td=sha256
+::set SIGNTOOLCMD1=%SIGNTOOL% sign /v /debug /sha1 %SIGNCERTSHA1% /fd sha1 /t http://timestamp.comodoca.com/?td=sha1
+::set SIGNTOOLCMD1=%SIGNTOOL% sign /v /debug /sha1 %SIGNCERTSHA1% /fd sha1 /t http://sha1timestamp.ws.symantec.com/sha1/timestamp
+set SIGNTOOLCMD2=%SIGNTOOL% sign /v /as /sha1 %SIGNCERTSHA1% /fd sha256 /td sha256 /tr http://timestamp.comodoca.com/?td=sha256
 ::set SIGNTOOLCMD3=%SIGNTOOL% sign /v /as /sha1 %SIGNCERTSHA1% /fd sha384 /td sha384 /tr http://timestamp.comodoca.com/?td=sha384
-set SIGNTOOLCMD4=%SIGNTOOL% sign /v /as /sha1 %SIGNCERTSHA1% /fd sha512 /td sha512 /tr http://timestamp.comodoca.com/?td=sha512
-set SIGNTOOLVERI=%SIGNTOOL% verify /v /a /all /pa /tw /sha1 %SIGNCERTSHA1% 
+::set SIGNTOOLCMD4=%SIGNTOOL% sign /v /debug /as /sha1 %SIGNCERTSHA1% /fd sha512 /td sha512 /tr http://timestamp.comodoca.com/?td=sha512
+::set SIGNTOOLCMD4=%SIGNTOOL% sign /v /debug /as /sha1 %SIGNCERTSHA1% /fd sha512 /td sha512 /tr http://sha512timestamp.ws.symantec.com/sha512/timestamp
+set SIGNTOOLVERI=%SIGNTOOL% verify /debug /a /all /pa /sha1 %SIGNCERTSHA1% 
 
 
 set PY32EXE=%PY32%\python.exe
