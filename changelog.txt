@@ -1,5 +1,8 @@
 # changelog.txt
 #
+Version: 0.8.19
++ update openvpn signing certs fingerprints
+
 Version: 0.8.18
 + fix exception DISCONNECT_ON_IDLE
 + allow bigger userids
