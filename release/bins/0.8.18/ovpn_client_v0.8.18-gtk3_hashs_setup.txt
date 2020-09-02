@@ -1,8 +1,0 @@
-c7583f56cb7774d3e67532485f6570ecfa4c1b13995162b7a0d350dc4431c72b  ovpn_client_v0.8.18-gtk3_win32_setup.exe
-ab84857e1f4faea3c665325a2bff8a3ed07d2850c480bdcdff595cf7154a1fd8  ovpn_client_v0.8.18-gtk3_win64_setup.exe
-12876624        ovpn_client_v0.8.18-gtk3_win32_setup.exe
-14027480        ovpn_client_v0.8.18-gtk3_win64_setup.exe
-13M     ovpn_client_v0.8.18-gtk3_win32_setup.exe
-14M     ovpn_client_v0.8.18-gtk3_win64_setup.exe
-2c46c91c19ab20b6472101b9e50297085d59caac13956d315863987f821bad6eeb8536672282ac39477e2c696dae02866bdf3a6a6ab7a8982150e75d03868cc8  ovpn_client_v0.8.18-gtk3_win32_setup.exe
-72121c2cdac92f60cec192c78fa1e3aa98960e9eb47abf4b8b1401ffc40a12b95baf8d46139f80e7b52a28ec1a5cf6d90b76a4bed3e27646d599e92189cfdf0c  ovpn_client_v0.8.18-gtk3_win64_setup.exe
