@@ -6,7 +6,7 @@ set PY32=E:\python\Python34
 set PY64=E:\python\Python34_64
 
 set APPDIR=%APPDATA%\ovpn\bin\client\dist
-set INNOCOMPILE="C:\Program Files (x86)\Inno Setup 5\Compil32.exe"
+set INNOCOMPILE="C:\Program Files (x86)\Inno Setup 6\Compil32.exe"
 set EXE7Z="%PROGRAMFILES%\7-Zip\7z.exe"
 
 set BITS=%~1
