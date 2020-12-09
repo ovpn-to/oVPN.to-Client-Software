@@ -1,5 +1,9 @@
 # changelog.txt
 #
+
+Version: 0.8.20
++ update ssl certificate
+
 Version: 0.8.19
 + update openvpn signing certs fingerprints
 
