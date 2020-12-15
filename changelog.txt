@@ -1,6 +1,9 @@
 # changelog.txt
 #
 
+Version: 0.8.21
++ update openvpn 2.4.10
+
 Version: 0.8.20
 + update ssl certificate
 

@@ -22,17 +22,17 @@ def values(DEBUG):
             OSVER = "Win10"
         
         ARCH = get_arch(DEBUG)
-        BUILT = "Apr 16 2020"
-        TIMESTAMP = 1586988000
-        VERSION = "2.4.9"
+        BUILT = "Dec 09 2020"
+        TIMESTAMP = 1607468400
+        VERSION = "2.4.10"
         BUILT_V = "I601"
         
         if OSVER == "Win10":
-            SHA_512 = "0a18f720856429da8f68a9ab1ec782ee3655981cbfb5b33b94d03e85ba8b1315b370d7c35fe0f23ec7b1e12c2647c26cb5124cf890dec43b0f110253b42deb2d"
-            F_SIZE = 4310696
+            SHA_512 = "136281dffbca97333ddf31ea75cd29c814fe79b894bfb774e9c28264860360ed810312da864455f7e7fc1e9af4ba9cc5fe03b34a3de6d4e6cce06802c9ca6fb2"
+            F_SIZE = 5056752
         elif OSVER == "Win7":
-            SHA_512 = "9589aff2daf60325d79fd561f326fcd02e7628dcb2c6cf067ac32f0753c1659596e6a64faf054cdd323c3f937098ccca62fbb4fbb8e9a1535f4db008cca6b2f5"
-            F_SIZE = 4296720
+            SHA_512 = "454ccffcf7d9eb9e4b786745f2a67bed7bb96d0f9674aa11e197b41aba36decb2fc019979a52a1f953b01d9d3e6be7aad0b4c766176438e3da347079251a4b4a"
+            F_SIZE = 5044640
         else:
             debug(1,"[openvpn.py] def values: OSVERSION failed = '%s'"%(platform.platform()),DEBUG,True)
             sys.exit()

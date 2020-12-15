@@ -5557,13 +5557,18 @@ class Systray:
             return False
             
         try:
+        
+            OSVER = "Win7"
+            if "Windows-10" in platform.platform():
+                OSVER = "Win10"
+            
             HEADERS = request_api.useragent(self.DEBUG)
             if API_ACTION == "auth" or API_ACTION == "lastupdate" or API_ACTION == "winrelease" or API_ACTION == "winrelease_url":
                 if API_ACTION == "winrelease" or API_ACTION == "winrelease_url":
                     MYBITS = int(BUILT_STRING.split()[7])
-                    values = { 'action' : API_ACTION, 'bits' : MYBITS }
+                    values = { 'action' : API_ACTION, 'bits' : MYBITS, 'winver': OSVER }
                 else:
-                    values = { 'uid' : self.USERID, 'apikey' : self.APIKEY, 'action' : API_ACTION }
+                    values = { 'uid' : self.USERID, 'apikey' : self.APIKEY, 'action' : API_ACTION, 'winver': OSVER }
                 r = requests.post(url=self.APIURL,data=values,headers=HEADERS)
                 response = r.text
                 if response == "AUTHERROR":
